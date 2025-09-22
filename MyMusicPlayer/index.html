@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Personal Music Player — Enhanced</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app__header">
+      <h1 class="app__title">🎵 My Personal Music Player</h1>
+      <div class="header__right">
+        <button id="theme-toggle" class="btn btn--ghost" title="Toggle theme" aria-label="Toggle theme">🌓</button>
+      </div>
+    </header>
+
+    <main class="player">
+      <!-- Now Playing -->
+      <section class="now-playing" aria-live="polite">
+        <div class="cover">
+          <img id="album-art" src="images/photo1.jpg" alt="Album artwork" />
+          <div class="cover__badge" id="cover-badge" hidden>LIVE</div>
+        </div>
+        <div class="meta">
+          <h2 id="song-title" class="meta__title">Song Title</h2>
+          <p id="song-artist" class="meta__artist">Artist Name</p>
+
+          <!-- Progress -->
+          <div class="progress" role="group" aria-label="Seek within track">
+            <span id="current-time" class="time">0:00</span>
+            <input
+              type="range"
+              id="progress"
+              min="0"
+              value="0"
+              step="1"
+              aria-label="Seek"
+            />
+            <span id="duration" class="time">0:00</span>
+          </div>
+
+          <!-- Volume -->
+          <div class="volume" role="group" aria-label="Volume">
+            <button id="mute" class="btn btn--ghost" title="Mute (M)" aria-label="Mute">🔇</button>
+            <input type="range" id="volume" min="0" max="1" step="0.01" value="1" aria-label="Volume slider" />
+          </div>
+
+          <!-- Actions -->
+          <div class="actions">
+            <button id="fav-btn" class="btn btn--pill" title="Add to favorites (L)" aria-pressed="false">⭐ Favorite</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transport Controls -->
+      <nav class="transport" aria-label="Playback controls">
+        <button id="prev" class="btn" title="Previous (←)" aria-label="Previous">⏮</button>
+        <button id="play" class="btn btn--primary" title="Play/Pause (Space)" aria-label="Play">▶️</button>
+        <button id="next" class="btn" title="Next (→)" aria-label="Next">⏭</button>
+        <div class="toggles">
+          <button id="repeat" class="btn btn--ghost" title="Repeat current" aria-label="Repeat" aria-pressed="false">🔁</button>
+          <button id="shuffle" class="btn btn--ghost" title="Shuffle" aria-label="Shuffle" aria-pressed="false">🔀</button>
+        </div>
+      </nav>
+
+      <!-- Search -->
+      <section class="search">
+        <div class="search__bar">
+          <input id="search" type="text" placeholder="Search songs by title or artist…" aria-label="Search songs" />
+          <button id="voice-search" class="btn btn--ghost" title="Voice search">🎤</button>
+        </div>
+        <small class="hint">Tip: Press <kbd>/</kbd> to focus search</small>
+      </section>
+
+      <!-- Layout: Sidebar + Lists -->
+      <section class="layout">
+        <aside class="sidebar">
+          <h3>⭐ Favorites</h3>
+          <ul id="favorites" class="list" aria-label="Favorites"></ul>
+
+          <h3>⏱ Recently Played</h3>
+          <ul id="recently-played" class="list" aria-label="Recently played"></ul>
+        </aside>
+
+        <section class="content">
+          <h3>📃 Playlist</h3>
+          <ul id="playlist" class="list list--media" aria-label="Playlist"></ul>
+        </section>
+      </section>
+    </main>
+
+    <footer class="app__footer">
+      <div class="mini-player">
+        <button id="mini-prev" class="btn btn--ghost" title="Previous">⏮</button>
+        <button id="mini-play" class="btn btn--primary" title="Play/Pause">▶️</button>
+        <button id="mini-next" class="btn btn--ghost" title="Next">⏭</button>
+        <div class="mini-meta">
+          <strong id="mini-title">Song Title</strong>
+          <span id="mini-artist">Artist Name</span>
+        </div>
+      </div>
+      <small>Keyboard: Space ⏯, ←/→ ⏮⏭, M mute, L favorite</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
